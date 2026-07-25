@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vasant Valley School">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B02440" />
+      <stop offset="1" stop-color="#7C1528" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#g)" d="M20 2h24l18 18v24L44 62H20L2 44V20L20 2z" />
+  <path
+    fill="#FAF5EC"
+    d="M17 20h7.4l7.6 20.2L39.6 20H47L35.6 48h-7.2L17 20zm10.6 0h8.8l-4.4 11.8L27.6 20z"
+    opacity=".95"
+  />
+</svg>

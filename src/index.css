@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-h: 76px;
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-sand-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Anchor targets clear the sticky header. */
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-sand-50 font-sans text-ink-800 antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink-900;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users only. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-crimson-600 ring-offset-2 ring-offset-sand-50;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    @apply bg-crimson-700 text-sand-100;
+  }
+
+  /* Slim, unobtrusive scrollbar that matches the palette. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-sand-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-sand-400;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-crimson-700;
+  }
+
+  /* Respect the OS "reduce motion" setting across the whole site. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+           tracking-wide transition-all duration-300 ease-out-expo disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-crimson-700 text-sand-50 shadow-soft hover:-translate-y-0.5 hover:bg-crimson-800 hover:shadow-lift;
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink-900/15 bg-transparent text-ink-900 hover:-translate-y-0.5 hover:border-crimson-700 hover:text-crimson-700;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-sand-100/40 bg-sand-50/10 text-sand-50 backdrop-blur-sm hover:bg-sand-50 hover:text-crimson-800;
+  }
+
+  /* Text link with an arrow — the site's recurring "read more" cue.
+     Pair with the `group` class so the arrow can react to hover. */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em]
+           text-crimson-700 transition-colors hover:text-crimson-900;
+  }
+
+  .eyebrow {
+    @apply mb-4 inline-flex items-center gap-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-crimson-700;
+  }
+
+  .eyebrow-light {
+    @apply mb-4 inline-flex items-center gap-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-sand-300;
+  }
+
+  .card {
+    @apply rounded-3xl border border-sand-300/70 bg-white p-7 shadow-soft transition-all duration-500 ease-out-expo;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-1.5 hover:border-crimson-200 hover:shadow-lift;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-sand-300 bg-white px-4 py-3 text-[0.95rem] text-ink-900
+           placeholder:text-ink-500/60 transition-colors focus:border-crimson-600 focus:outline-none
+           focus:ring-2 focus:ring-crimson-600/25;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-ink-600;
+  }
+
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  .prose-vv p {
+    @apply mb-4 leading-[1.85] text-ink-700;
+  }
+  .prose-vv p:last-child {
+    @apply mb-0;
+  }
+}
+
+@layer utilities {
+  /* The school's octagonal motif, reused for imagery and badges. */
+  .clip-octagon {
+    clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  }
+
+  .clip-corner {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 82%, transparent 100%);
+  }
+}
